@@ -20,7 +20,7 @@ export default function Composer({ currentUserId, onPost }: Props) {
     setLoading(true)
     const supabase = createClient()
 
-    const tags = [...new Set(content.match(/#\w+/g)?.map(t => t.toLowerCase()) ?? [])]
+const tags = Array.from(new Set(content.match(/#\w+/g)?.map(t => t.toLowerCase()) ?? []))
 
     const { data, error } = await supabase
       .from('posts')
