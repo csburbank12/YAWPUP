@@ -39,3 +39,22 @@ export default async function ProfilePage() {
     />
   )
 }
+<button
+  onClick={async () => {
+    const { createClient } = await import('@/lib/supabase/client')
+    const supabase = createClient()
+    await supabase.auth.signInWithPassword({
+      email: 'demo@yawp.social',
+      password: 'yawpdemo123'
+    })
+    window.location.href = '/feed'
+  }}
+  style={{
+    background: 'none', color: '#888',
+    border: '1px solid #2A2A2A',
+    padding: '13px 28px', borderRadius: 24,
+    fontSize: 15, cursor: 'pointer'
+  }}
+>
+  Try demo
+</button>
