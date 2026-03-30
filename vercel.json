@@ -1,0 +1,11 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://qyeqcqbpljszbzkeyeeb.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5ZXFjcWJwbGpzemJ6a2V5ZWViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4Mzk3OTMsImV4cCI6MjA5MDQxNTc5M30.VYkBKwR80KgLxPqMMu5zbg_jJ3i5Er1pGGDr_E_E7GY",
+    "NEXT_PUBLIC_SITE_URL": "https://yawp.vercel.app"
+  }
+}
