@@ -25,6 +25,11 @@ const S = {
     padding: 13, color: '#0D0D0D', fontWeight: 700, fontSize: 15,
     cursor: 'pointer', marginTop: 4
   } as React.CSSProperties,
+  demoBtn: {
+    width: '100%', background: 'transparent', border: '2px solid #E8FF47', borderRadius: 10,
+    padding: 12, color: '#E8FF47', fontWeight: 700, fontSize: 15,
+    cursor: 'pointer', marginTop: 8
+  } as React.CSSProperties,
   error: { color: '#FF6B6B', fontSize: 13 } as React.CSSProperties,
   sub: { textAlign: 'center' as const, color: '#555', fontSize: 13, marginTop: 20 },
 }
@@ -43,6 +48,21 @@ export default function LoginPage() {
     const supabase = createClient()
 
     const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) { setError(error.message); setLoading(false); return }
+
+    router.push('/feed')
+    router.refresh()
+  }
+
+  const handleDemoLogin = async () => {
+    setLoading(true)
+    setError('')
+    const supabase = createClient()
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email: 'demo@yawp.com',
+      password: 'DemoPassword123'
+    })
     if (error) { setError(error.message); setLoading(false); return }
 
     router.push('/feed')
@@ -71,6 +91,9 @@ export default function LoginPage() {
           {error && <p style={S.error}>{error}</p>}
           <button type="submit" style={S.btn} disabled={loading}>
             {loading ? 'Signing in...' : 'Sign in'}
+          </button>
+          <button type="button" onClick={handleDemoLogin} style={S.demoBtn} disabled={loading}>
+            {loading ? 'Loading...' : 'Try Demo'}
           </button>
         </form>
 
